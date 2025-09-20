@@ -23,9 +23,6 @@ const registerFormSchema = z.object(
     }
 )
 
-
-
-
 export default function RegisterForm() {
 
     const { register, handleSubmit,
@@ -233,7 +230,8 @@ export default function RegisterForm() {
 
                             </div>
                             <div className="grid gap-2">
-                                <p className=" text-[11px] ">People who use our service may have uploaded your contact information to SOCIOGRAM. Learn more.</p>
+                                <p className=" text-[11px] ">People who use our service may have 
+                                uploaded your contact information to SOCIOGRAM. Learn more.</p>
                                 <p className="text-[11px]">
                                     By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy.
                                     You may receive SMS Notification from us and can opt out any time.

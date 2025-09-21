@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import z from "zod";
 
 const loginFormSchema = z.object(
@@ -26,18 +26,26 @@ const LoginForm = () => {
             mode: "onSubmit"
         }
     );
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        console.log(data);
-        localStorage.setItem('email', data.email);
-        localStorage.setItem('password', data.password);
-
-
+        if (userData.email === data.email || userData.password === data.password) { alert('Login Successful.') }
+        else {
+            alert('unknown Username')
+            return ('/');
+        }
+        navigate('/home')
     }
 
+    const userData = {
+        email: localStorage.getItem('email'),
+        password: localStorage.getItem('password')
+    }
+    console.log({ userData });
+
+ 
+
     return (
-
-
 
         <>
             <div className="sm:flex h-dvh sm:px-80 sm:py-60 justify-between bg-[rgb(242,244,247)] grid grid-rows-1">

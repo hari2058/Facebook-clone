@@ -7,6 +7,8 @@ import { Home } from './pages/home'
 import { Content } from './pages/content'
 import { BookMark } from './pages/bookmark'
 import { UserRound } from './pages/userround'
+import { Profile } from './pages/profile'
+import { AddPost } from './components/addPost'
 
 function App() {
 
@@ -22,6 +24,8 @@ function App() {
           <Route path='/content' element={<Content />} />
           <Route  path='/bookmark' element={<BookMark />}/>
           <Route  path='/userround' element={<UserRound />}/>
+          <Route  path='/profile' element={<Profile />}/>
+          <Route  path='/addPost' element={<AddPost />}/>
         </Routes>
       </BrowserRouter>
     

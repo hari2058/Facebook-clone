@@ -71,7 +71,10 @@ export function NavBar() {
                         <MessageCircle />
                     </div>
 
-                    <img className=" border h-[40px] rounded-full w-[40px]" alt="profile picture" />
+<Link to="/profile">
+                        <img className=" border h-[40px] rounded-full w-[40px]" alt="profile picture" />
+
+</Link>
 
 
                 </div>

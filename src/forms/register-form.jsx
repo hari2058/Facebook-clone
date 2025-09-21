@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import z from "zod";
 
 
@@ -42,10 +42,12 @@ export default function RegisterForm() {
         console.log(data);
         localStorage.setItem('email', data.email);
         localStorage.setItem('password', data.password);
-        localStorage.setItem('firstname', data.firstname);
-        localStorage.setItem('lastname', data.lastname);
-        localStorage.setItem('Birthdate:', data.month + "/" +  data.day +"/" + data.year);
+        localStorage.setItem('fullname', data.firstname + data.lastname)
+
+        localStorage.setItem('Birthdate:', data.month + "/" + data.day + "/" + data.year);
         localStorage.setItem('gender', data.gender);
+
+        navigate("/home");
 
     }
 
@@ -230,8 +232,8 @@ export default function RegisterForm() {
 
                             </div>
                             <div className="grid gap-2">
-                                <p className=" text-[11px] ">People who use our service may have 
-                                uploaded your contact information to SOCIOGRAM. Learn more.</p>
+                                <p className=" text-[11px] ">People who use our service may have
+                                    uploaded your contact information to SOCIOGRAM. Learn more.</p>
                                 <p className="text-[11px]">
                                     By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy.
                                     You may receive SMS Notification from us and can opt out any time.
@@ -242,7 +244,6 @@ export default function RegisterForm() {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-onClick={navigate('/home')}
                                     className="border bg-emerald-500 rounded-sm text-white w-[150px] h-[36px] font-bold cursor-pointer" >Sign Up</button>
                             </div>
 

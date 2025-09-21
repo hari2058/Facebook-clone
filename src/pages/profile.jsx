@@ -30,7 +30,7 @@ const navigate = useNavigate();
 
                         <div className=" flex flex-col gap-10 w-80">
                            <div className="flex justify-end ">
-                                <p className="flex border-white border-4 bg-white gap-3 p-1 rounded-xl">
+                                <p className="flex border-white border-4 cursor-pointer bg-white gap-3 p-1 rounded-xl">
                                     <CameraIcon /> Edit cover photo
                                 </p>
                            </div>
@@ -40,14 +40,14 @@ const navigate = useNavigate();
                                 
                             
                                     <button 
-                                    onClick={() => navigate("/addPost")} className="flex w-full  gap-3 bg-blue-600 text-white px-3 py-1  rounded-md font-bold">
+                                    onClick={() => navigate("/addPost")} className="flex w-full cursor-pointer gap-3 bg-blue-600 text-white px-3 py-1  rounded-md font-bold">
                                         <Plus />Add a post </button>
                                 
                                    
                                 
                               
 
-                                <p className="flex gap-2 w-full bg-gray-300 rounded-md px-2 py-1 items-center "> <Pen className="h-5" />Edit Profile</p>
+                                <p className="flex gap-2 w-full bg-gray-300 rounded-md px-2 py-1 cursor-pointer items-center "> <Pen className="h-5" />Edit Profile</p>
                             </div>
 
                             

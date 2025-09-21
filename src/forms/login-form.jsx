@@ -31,7 +31,7 @@ const LoginForm = () => {
     const onSubmit = (data) => {
         if (userData.email === data.email || userData.password === data.password) { alert('Login Successful.') }
         else {
-            alert('unknown Username')
+            alert('Unregistered User, Please register.')
             return ('/');
         }
         navigate('/home')
@@ -43,7 +43,7 @@ const LoginForm = () => {
     }
     console.log({ userData });
 
- 
+
 
     return (
 

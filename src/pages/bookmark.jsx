@@ -1,9 +1,9 @@
 import { NavBar } from "../components/navbar";
 
-export function Home () {
+export function BookMark () {
     return(
         <>
         <NavBar />
         </>
     )
-};
+}

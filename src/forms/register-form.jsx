@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import z from "zod";
 
 
@@ -34,6 +34,8 @@ export default function RegisterForm() {
         }
     )
 
+    const navigate = useNavigate();
+
 
 
     const onSubmit = (data) => {
@@ -42,9 +44,7 @@ export default function RegisterForm() {
         localStorage.setItem('password', data.password);
         localStorage.setItem('firstname', data.firstname);
         localStorage.setItem('lastname', data.lastname);
-        localStorage.setItem('month', data.month);
-        localStorage.setItem('day', data.day);
-        localStorage.setItem('year', data.year);
+        localStorage.setItem('Birthdate:', data.month + "/" +  data.day +"/" + data.year);
         localStorage.setItem('gender', data.gender);
 
     }
@@ -242,8 +242,8 @@ export default function RegisterForm() {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-
-                                    className="border bg-emerald-500 rounded-sm text-white w-[150px] h-[36px] font-bold cursor-pointer">Sign Up</button>
+onClick={navigate('/home')}
+                                    className="border bg-emerald-500 rounded-sm text-white w-[150px] h-[36px] font-bold cursor-pointer" >Sign Up</button>
                             </div>
 
                             <Link to="/">

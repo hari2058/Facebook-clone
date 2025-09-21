@@ -1,9 +1,10 @@
 import { NavBar } from "../components/navbar";
 
-export function Home () {
-    return(
+export function Content() {
+    return (
         <>
         <NavBar />
+
         </>
     )
-};
+}

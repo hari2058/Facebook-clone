@@ -4,6 +4,9 @@ import './App.css'
 import LoginForm from './forms/login-form'
 import RegisterForm from './forms/register-form'
 import { Home } from './pages/home'
+import { Content } from './pages/content'
+import { BookMark } from './pages/bookmark'
+import { UserRound } from './pages/userround'
 
 function App() {
 
@@ -11,10 +14,14 @@ function App() {
   return (
     <>
       <BrowserRouter>
+     
         <Routes>
           <Route path='/' element={<LoginForm />} />
           <Route  path='/register' element={<RegisterForm />}/>
           <Route path='/home' element={<Home />} />
+          <Route path='/content' element={<Content />} />
+          <Route  path='/bookmark' element={<BookMark />}/>
+          <Route  path='/userround' element={<UserRound />}/>
         </Routes>
       </BrowserRouter>
     

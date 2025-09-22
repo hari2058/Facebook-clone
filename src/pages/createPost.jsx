@@ -4,19 +4,20 @@ import { FaUserTag } from "react-icons/fa";
 import { IoIosMore } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
 
-export function CreatePost() {
+export const CreatePost = ({ isOpen, onClose }) => {
+    if (!isOpen) return null;
 
     const userName = localStorage.getItem('fullname')
 
+
     return (
         < >
-
-            <div className=" bg-gray-200 flex justify-center p-5">
-                <div className=" bg-white rounded-md w-140  px-3 py-3 grid gap-2">
+            <div className=" bg-gray-500/30 min-h-screen min-w-screen grid justify-center items-center">
+                <div className=" bg-white max-h-120     rounded-md w-140  px-3 py-3 grid gap-2">
 
                     <div className="flex justify-center  relative items-center px-2  ">
                         <p className=" text-[18px] font-medium">Create Post</p>
-                        <X className="bg-gray-300 rounded-full p-1 w-8 h-8 absolute right-2" />
+                        <X onClick={onClose} className="bg-gray-300 rounded-full p-1 w-8 h-8 absolute right-2" />
                     </div>
                     <hr className="my-2" />
                     <div className="flex    gap-3">
@@ -54,6 +55,9 @@ export function CreatePost() {
 
                 </div>
             </div>
+
+
+
 
         </>
     )

@@ -24,7 +24,7 @@ export function AddPost() {
                 <div className="flex   justify-center  p-2  ">
                     <div className=" w-200 h-full  bg-white  rounded-lg  drop-shadow-xl">
                         <div className="flex gap-3 items-center py-4 px-3 ">
-                            <div><img src="" className="w-10 h-10 rounded-full border-2" alt="profile picture" /></div>
+                            <div><img  className="w-10 h-10 rounded-full border-2" alt="profile picture" /></div>
                             <input
                                 onClick={handleOpenPost} type="text " placeholder="What's on your mind?" className="cursor-pointer px-3 bg-gray-200 rounded-2xl w-full h-10" />
 

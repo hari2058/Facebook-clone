@@ -21,7 +21,11 @@ export function NavBar() {
             <div className="h-[56px]  grid grid-cols-3 p-2  bg-[rgb(242,244,247)]">
                 {/* logo and search bar div */}
                 <div className="flex pl-5 items-center gap-2 ">
-                    <img src="/s.png" alt="Sociogram logo" className="h-[32.59px] rounded-full" />
+
+                    <Link to='/home'>
+                        <img src="/s.png" alt="Sociogram logo" className="h-[32.59px] rounded-full" />
+
+                    </Link>
                     <div className="relative">
 
                         <div className="absolute left-0 pl-3  flex justify-center  rounded-full  ">

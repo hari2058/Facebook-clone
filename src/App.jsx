@@ -10,6 +10,7 @@ import { UserRound } from './pages/userround'
 import { Profile } from './pages/profile'
 import { AddPost } from './components/addPost'
 import { CreatePost } from './pages/createPost'
+import { Post } from './pages/post'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route  path='/profile' element={<Profile />}/>
           <Route  path='/addPost' element={<AddPost />}/>
           <Route path='/createPost' element={ <CreatePost />} />
+          <Route path='/post' element={<Post />} />
 
 
         </Routes>

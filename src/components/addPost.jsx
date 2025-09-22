@@ -21,7 +21,7 @@ export function AddPost() {
 
             <div className=" relative">
 
-                <div className="flex   justify-center min-h-screen p-2 bg-gray-200 z-20 ">
+                <div className="flex   justify-center  p-2  ">
                     <div className=" w-200 h-full  bg-white  rounded-lg  drop-shadow-xl">
                         <div className="flex gap-3 items-center py-4 px-3 ">
                             <div><img src="" className="w-10 h-10 rounded-full border-2" alt="profile picture" /></div>
@@ -46,7 +46,6 @@ export function AddPost() {
 
                         </div>
                     </div>
-
                 </div>
                 <div className=" absolute top-0 z-10">
                     <CreatePost isOpen={isPostOpen} onClose={handleClosePost} />

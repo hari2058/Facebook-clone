@@ -102,7 +102,7 @@ export const Post = () => {
               <hr />
               <div className="flex  gap-2 justify-between px-4 py-2 ">
                 <span
-                  className={`flex gap-2 justify-between items-center hover:bg-gray-200  hover:rounded-2xl px-8 py-1 ${
+                  className={`flex gap-2 justify-between items-center hover:bg-gray-200 cursor-pointer  hover:rounded-2xl px-8 py-1 ${
                     post.liked ? "text-[rgb(8,102,255)] font-semibold" : ""
                   }`}
                   onClick={() => handleLike(post.id)}
@@ -116,7 +116,10 @@ export const Post = () => {
                   comment
                 </span>
 
-                <span className="flex justify-between items-center hover:bg-gray-200  hover:rounded-2xl px-8 py-1 gap-2 ">
+                <span
+                  className={` flex justify-between items-center hover:bg-gray-200  hover:rounded-2xl px-8 py-1 gap-2 ${post.bookmarked}`}
+                  
+                >
                   <Bookmark onClick={() => handleBookmark(Post)} />
                   Save
                 </span>

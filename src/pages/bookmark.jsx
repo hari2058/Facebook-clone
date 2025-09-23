@@ -4,6 +4,10 @@ export function BookMark () {
     return(
         <>
         <NavBar />
+
+        <div>
+            
+        </div>
         </>
     )
 }

@@ -22,16 +22,24 @@ export const Post = () => {
     }
   }, [location.state]);
 
-
   const handleDelete = (postID) => {
     const updatedPosts = posts.filter((post) => post.id !== postID);
     setPosts(updatedPosts);
     localStorage.setItem("posts", JSON.stringify(updatedPosts));
-    alert("post deleted.")
-  }
+    alert("post deleted.");
+  };
 
+  const handleLike = (postID) => {
+    const updatedPosts = posts.map((post) => {
+      if (post.id === postID) {
+        return { ...post, liked: !post.liked };
+      }
+      return post;
+    });
 
-  
+    setPosts(updatedPosts);
+    localStorage.setItem("posts", JSON.stringify(updatedPosts));
+  };
 
   const handleBookmark = (post) => {
     const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
@@ -70,31 +78,37 @@ export const Post = () => {
                 </div>
                 <div className="flex gap-2">
                   <MoreHorizontal />
-                  <X onClick={() => handleDelete(post.id)} className="cursor-pointer" />
+                  <X
+                    onClick={() => handleDelete(post.id)}
+                    className="cursor-pointer"
+                  />
                 </div>
               </div>
 
               <div>
-
                 <p className="text-lg ">{post.text}</p>
 
                 <div className="flex justify-center pb-4 ">
                   {post.image && (
-                  <img
-                    src={post.image}
-                    alt="post"
-                    className=" items-center p-2 rounded-lg max-h-60 object-cover"
-                  />
-                )}
+                    <img
+                      src={post.image}
+                      alt="post"
+                      className=" items-center p-2 rounded-lg max-h-60 object-cover"
+                    />
+                  )}
                 </div>
-                
               </div>
 
               <hr />
               <div className="flex  gap-2 justify-between px-4 py-2 ">
-                <span className="flex gap-2 justify-between items-center hover:bg-gray-200  hover:rounded-2xl px-8 py-1">
+                <span
+                  className={`flex gap-2 justify-between items-center hover:bg-gray-200  hover:rounded-2xl px-8 py-1 ${
+                    post.liked ? "text-[rgb(8,102,255)] font-semibold" : ""
+                  }`}
+                  onClick={() => handleLike(post.id)}
+                >
                   <BiLike className="w-6 h-6" />
-                  Like
+                  {post.liked ? "Unlike" : "Like"}
                 </span>
 
                 <span className="flex gap-2 justify-between items-center hover:bg-gray-200  hover:rounded-2xl px-8 py-1">

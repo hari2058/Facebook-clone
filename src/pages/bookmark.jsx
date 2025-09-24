@@ -1,13 +1,11 @@
 import { NavBar } from "../components/navbar";
 
-export function BookMark () {
-    return(
-        <>
-        <NavBar />
+export function BookMark() {
+  return (
+    <>
+      <NavBar />
 
-        <div>
-            
-        </div>
-        </>
-    )
+      <div></div>
+    </>
+  );
 }

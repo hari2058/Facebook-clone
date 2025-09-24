@@ -118,7 +118,6 @@ export const Post = () => {
 
                 <span
                   className={` flex justify-between items-center hover:bg-gray-200  hover:rounded-2xl px-8 py-1 gap-2 ${post.bookmarked}`}
-                  
                 >
                   <Bookmark onClick={() => handleBookmark(Post)} />
                   Save

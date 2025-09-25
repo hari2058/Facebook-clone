@@ -11,7 +11,14 @@ export const Post = () => {
 
   useEffect(() => {
     const savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
-    setPosts(savedPosts);
+    const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+
+    const margedPosts = savedPosts.map((p) => ({
+      ...p,
+      bookmarked: savedBookmarks.some((b) => b.id === p.id),
+    }));
+    
+    setPosts(margedPosts);
   }, []);
 
   useEffect(() => {
@@ -45,16 +52,23 @@ export const Post = () => {
     const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
     const alreadyBookmarked = savedBookmarks.find((b) => b.id === post.id);
 
+    let updatedBookmark;
+
     if (alreadyBookmarked) {
-      alert("post already bookmarked.");
-      return;
+      updatedBookmark = savedBookmarks.filter((b) => b.id !== post.id);
+      alert("post removed from bookmarked.");
+    } else {
+      updatedBookmark = [post, ...savedBookmarks];
+      alert("post bookmarked.");
     }
 
-    localStorage.setItem(
-      "bookmarks",
-      JSON.stringify([post, ...savedBookmarks])
+    localStorage.setItem("bookmarks", JSON.stringify(updatedBookmark));
+
+    setPosts((save) =>
+      save.map((p) =>
+        p.id === post.id ? { ...p, bookmarked: !alreadyBookmarked } : p
+      )
     );
-    alert("post bookmarked.");
   };
 
   return (
@@ -107,7 +121,10 @@ export const Post = () => {
                   }`}
                   onClick={() => handleLike(post.id)}
                 >
-                  <BiLike className="w-6 h-6" />
+                  <BiLike
+                    fill={post.liked ? "currentColor" : ""}
+                    className="w-6 h-6"
+                  />
                   {post.liked ? "Unlike" : "Like"}
                 </span>
 
@@ -117,10 +134,13 @@ export const Post = () => {
                 </span>
 
                 <span
-                  className={` flex justify-between items-center hover:bg-gray-200  hover:rounded-2xl px-8 py-1 gap-2 ${post.bookmarked}`}
+                  onClick={() => handleBookmark(post)}
+                  className={` flex justify-between items-center hover:bg-gray-200  hover:rounded-2xl px-8 py-1 gap-2 ${
+                    post.bookmarked ? "text-green-500" : ""
+                  }`}
                 >
-                  <Bookmark onClick={() => handleBookmark(Post)} />
-                  Save
+                  <Bookmark fill={post.bookmarked ? "currentColor" : "none "} />
+                  {post.bookmarked ? "Unsave" : "Save"}
                 </span>
               </div>
             </div>

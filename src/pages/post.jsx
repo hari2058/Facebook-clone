@@ -11,14 +11,8 @@ export const Post = () => {
 
   useEffect(() => {
     const savedPosts = JSON.parse(localStorage.getItem("posts")) || [];
-    const savedBookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
 
-    const margedPosts = savedPosts.map((p) => ({
-      ...p,
-      bookmarked: savedBookmarks.some((b) => b.id === p.id),
-    }));
-    
-    setPosts(margedPosts);
+    setPosts(savedPosts);
   }, []);
 
   useEffect(() => {
@@ -59,10 +53,10 @@ export const Post = () => {
       alert("post removed from bookmarked.");
     } else {
       updatedBookmark = [post, ...savedBookmarks];
-      alert("post bookmarked.");
     }
 
     localStorage.setItem("bookmarks", JSON.stringify(updatedBookmark));
+    alert("post bookmarked.");
 
     setPosts((save) =>
       save.map((p) =>

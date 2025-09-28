@@ -28,6 +28,8 @@ export function BookMark() {
     localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks));
     alert("Bookmark deleted.");
   };
+const userImage = localStorage.getItem("profileimage");
+
 
   return (
     <>
@@ -47,6 +49,7 @@ export function BookMark() {
               <div className="flex justify-between p-2">
                 <div className="flex gap-2">
                   <img
+                  src={userImage}
                     alt="profile"
                     className="w-10 h-10 rounded-full border"
                   />
@@ -94,7 +97,7 @@ export function BookMark() {
                   Comment
                 </span>
 
-                <span className="flex gap-2 items-center hover:bg-gray-200 hover:rounded-2xl px-8 py-1">
+                <span className="flex gap-2 items-center hover:bg-gray-200 cursor-pointer hover:rounded-2xl px-8 py-1">
                   <Bookmark />
                   Saved
                 </span>

@@ -42,12 +42,14 @@ export default function RegisterForm() {
         console.log(data);
         localStorage.setItem('email', data.email);
         localStorage.setItem('password', data.password);
-        localStorage.setItem('fullname', data.firstname + data.lastname)
+        localStorage.setItem('fullname', data.firstname + " " + data.lastname)
         localStorage.setItem('Birthdate:', data.month + "/" + data.day + "/" + data.year);
         localStorage.setItem('gender', data.gender);
 
         navigate("/");
         alert("Registration Successful.");
+
+        
         
 
     }

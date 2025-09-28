@@ -1,10 +1,12 @@
 import { Camera, CameraIcon, Pen, Plus } from "lucide-react";
 import { NavBar } from "../components/navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CreatePost } from "./createPost";
+import { CgProfile } from "react-icons/cg";
 
 export function Profile() {
   const [isPostOpen, setIsPostOpen] = useState(false);
+  const [profileImage, setProfileImage] = useState(null);
 
   const handleOpenPost = () => {
     setIsPostOpen(true);
@@ -17,7 +19,27 @@ export function Profile() {
   const userName = localStorage.getItem("fullname");
   console.log({ userName });
 
- 
+  useEffect(() => {
+    const savedImage = localStorage.getItem("profileImage");
+    if (savedImage) {
+      setProfileImage(savedImage);
+    }
+  }, []);
+
+const  userImage = localStorage.getItem('profileimage');
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        localStorage.setItem("profileimage", reader.result); // save in localStorage
+        setProfileImage(reader.result); // update state immediately
+      };
+      reader.readAsDataURL(file); // convert file → base64
+    }
+  };
+
   return (
     <>
       <NavBar />
@@ -29,7 +51,7 @@ export function Profile() {
               <div className="relative flex  items-center gap-4">
                 <img
                   className="w-50 h-50   rounded-full border-4 border-white"
-                  src="https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
+                  src={userImage}
                   alt="profile picture"
                 />
 
@@ -38,8 +60,10 @@ export function Profile() {
                     <Camera className=" cursor-pointer bg-white absolute left-39 top-35  w-10 h-10 border-4 border-white rounded-full " />
                   </label>
                   <input
-                  id="userimage"
+                    id="profileImage"
                     type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
                     className="w-10 h-10 absolute left-39 top-35  opacity-0 cursor-pointer "
                   />
                 </div>

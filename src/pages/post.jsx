@@ -64,6 +64,8 @@ export const Post = () => {
       )
     );
   };
+const userImage = localStorage.getItem("profileimage");
+
 
   return (
     <>
@@ -79,6 +81,7 @@ export const Post = () => {
               <div className="flex justify-between p-2">
                 <div className="flex gap-2">
                   <img
+                  src={userImage}
                     alt="profile"
                     className="w-10 h-10 rounded-full border "
                   />
@@ -129,7 +132,7 @@ export const Post = () => {
 
                 <span
                   onClick={() => handleBookmark(post)}
-                  className={` flex justify-between items-center hover:bg-gray-200  hover:rounded-2xl px-8 py-1 gap-2 ${
+                  className={` flex justify-between items-center hover:bg-gray-200 cursor-pointer  hover:rounded-2xl px-8 py-1 gap-2 ${
                     post.bookmarked ? "text-green-500" : ""
                   }`}
                 >

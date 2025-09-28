@@ -39,6 +39,8 @@ export const CreatePost = ({ isOpen, onClose }) => {
     onClose();
     navigate("/home", { state: { newPost } });
   };
+const userImage = localStorage.getItem("profileimage");
+
 
   return (
     <>
@@ -55,6 +57,7 @@ export const CreatePost = ({ isOpen, onClose }) => {
             <hr className="my-2" />
             <div className="flex    gap-3">
               <img
+              src={userImage}
                 alt="profile picture"
                 className="border w-10 h-10 rounded-full "
               />

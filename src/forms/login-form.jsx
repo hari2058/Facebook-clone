@@ -29,7 +29,7 @@ const LoginForm = () => {
         navigate("/home");
         alert("Registration Successful.");
       }, 2500);
-    //   alert("Login Successful.");
+      //   alert("Login Successful.");
     } else {
       alert("Unregistered User, Please register.");
       return "/";
@@ -45,19 +45,19 @@ const LoginForm = () => {
 
   return (
     <>
-      <div className="sm:flex h-dvh sm:px-80 sm:py-60 justify-between bg-[rgb(242,244,247)] grid grid-rows-1">
-        <div className="sm:w-100 mt-20 ">
-          <h1 className="text-5xl font-bold text-[rgb(21,77,113)]">
+      <div className="sm:flex h-dvh sm:px-80 sm:py-60 justify-between  bg-[rgb(242,244,247)]  ">
+        <div className="  mx-auto mb-8 pt-10 px-4 text-center sm:w-100   ">
+          <h1 className=" sm:text-5xl mb-4 text-4xl  font-bold text-[rgb(21,77,113)]">
             SOCIOGRAM
           </h1>
-          <p className="text-[24px]">
+          <p className="sm:text-[24px]  text-base  ">
             Connect with friends and the world around you on Sociogram.
           </p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="">
-            <div className=" sm:p-3 rounded-sm bg-white sm:shadow-[inset_0px_0px_0px_1px_rgba(0,0,0,0.2)] w-[396px] h-[348.83px] >)">
+          <div className="grid justify-center">
+            <div className="  sm:p-3 rounded-sm bg-white sm:shadow-[inset_0px_0px_0px_1px_rgba(0,0,0,0.2)] w-[396px] h-[348.83px] >)">
               <ul className=" grid gap-3 ">
                 <li>
                   <input

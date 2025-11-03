@@ -23,7 +23,7 @@ export function AddPost() {
               <div>
                 <img
                   src={userImage}
-                  className="w-10 h-10 rounded-full border-2"
+                  className="border h-[39px] rounded-full w-[40px]"
                   alt="profile picture"
                 />
               </div>

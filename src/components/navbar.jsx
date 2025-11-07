@@ -7,6 +7,9 @@ import {
   TvMinimalPlay,
   UsersRound,
 } from "lucide-react";
+import { useState } from "react";
+import { FaBars } from "react-icons/fa";
+import { RxCrossCircled } from "react-icons/rx";
 import { Link } from "react-router-dom";
 
 export function NavBar() {
@@ -18,7 +21,9 @@ export function NavBar() {
   };
 
   const isActive = getActive();
-const userImage = localStorage.getItem("profileimage");
+  const userImage = localStorage.getItem("profileimage");
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -33,7 +38,7 @@ const userImage = localStorage.getItem("profileimage");
               className="h-[32.59px] rounded-full"
             />
           </Link>
-          <div className="relative">
+          <div className=" hidden md:grid relative">
             <div className="absolute left-0 pl-3  flex justify-center  rounded-full  ">
               <Search className="h-[32.59px] w-[16px] opacity-60 " />
             </div>
@@ -49,7 +54,7 @@ const userImage = localStorage.getItem("profileimage");
         </div>
 
         {/* navbar middle icons div */}
-        <div className="flex justify-between items-center ">
+        <div className=" hidden md:flex md:justify-between md:items-center ">
           <Link to="/home">
             <HomeIcon
               className={` ${isActive === "home" ? "text-blue-600  " : ""}`}
@@ -89,13 +94,59 @@ const userImage = localStorage.getItem("profileimage");
 
           <Link to="/profile">
             <img
-            src={userImage}
+              src={userImage}
               className=" border h-[40px] rounded-full w-[40px]"
               alt="profile picture"
             />
           </Link>
         </div>
+
+        <div className="md:hidden grid justify-items-end col-start-3 p-2">
+          <button onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? (
+              <RxCrossCircled className="text-3xl" />
+            ) : (
+              <FaBars className="text-3xl" />
+            )}
+          </button>
+        </div>
       </div>
+
+      {isOpen && (
+        <div className="md:hidden p-5 bg-[rgb(226,228,231)] border-2 rounded-2xl">
+          <div className="  flex justify-between items-center ">
+            <Link to="/home">
+              <HomeIcon
+                className={` ${isActive === "home" ? "text-blue-600  " : ""}`}
+              />
+            </Link>
+
+            <Link to="/content">
+              <TvMinimalPlay
+                className={` ${
+                  isActive === "content" ? "text-blue-600  " : ""
+                }`}
+              />
+            </Link>
+
+            <Link to="/bookmark">
+              <Bookmark
+                className={`text-black ${
+                  isActive === "bookmark" ? "text-blue-600" : ""
+                }`}
+              />
+            </Link>
+
+            <Link to="/userround">
+              <UsersRound
+                className={`text-black ${
+                  isActive === "userround" ? "text-blue-600" : ""
+                }`}
+              />
+            </Link>
+          </div>
+        </div>
+      )}
     </>
   );
 }

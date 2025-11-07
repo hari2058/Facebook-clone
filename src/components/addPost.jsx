@@ -2,6 +2,7 @@ import { Flag, Images, Video } from "lucide-react";
 import { useState } from "react";
 import { CreatePost } from "../pages/createPost";
 
+
 export function AddPost() {
   const [isPostOpen, setIsPostOpen] = useState(false);
 

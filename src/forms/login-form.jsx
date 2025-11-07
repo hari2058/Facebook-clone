@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import z from "zod";
 
@@ -25,13 +26,13 @@ const LoginForm = () => {
 
   const onSubmit = (data) => {
     if (userData.email === data.email || userData.password === data.password) {
+      toast.success("Registration Successful.", { duration: 900 });
       setTimeout(() => {
         navigate("/home");
-        alert("Registration Successful.");
-      }, 2500);
+      }, 1000);
       //   alert("Login Successful.");
     } else {
-      alert("Unregistered User, Please register.");
+      toast.error("Unregistered User, Please Register.", { duration: 1500 });
       return "/";
     }
     // navigate("/home");
@@ -45,6 +46,7 @@ const LoginForm = () => {
 
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="sm:flex h-dvh sm:px-80 sm:py-60 justify-between  bg-[rgb(242,244,247)]  ">
         <div className="  mx-auto mb-8 pt-10 px-4 text-center sm:w-100   ">
           <h1 className=" sm:text-5xl mb-4 text-4xl  font-bold text-[rgb(21,77,113)]">

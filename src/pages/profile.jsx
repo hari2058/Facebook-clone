@@ -1,11 +1,9 @@
-
-
-
 import { Camera, CameraIcon, Pen, Plus } from "lucide-react";
 import { NavBar } from "../components/navbar";
 import { useEffect, useState } from "react";
 import { CreatePost } from "./createPost";
 import { CgProfile } from "react-icons/cg";
+import toast, { Toaster } from "react-hot-toast";
 
 export function Profile() {
   const [isPostOpen, setIsPostOpen] = useState(false);
@@ -30,6 +28,7 @@ export function Profile() {
       reader.onloadend = () => {
         localStorage.setItem("profileimage", reader.result);
         setProfileImage(reader.result);
+        toast.success("Profile Updated.")
       };
       reader.readAsDataURL(file);
     }
@@ -37,6 +36,8 @@ export function Profile() {
 
   return (
     <>
+    <Toaster position="top-center"
+    reverseOrder={false} />
       <NavBar />
 
       <div className="relative">
@@ -59,6 +60,7 @@ export function Profile() {
                   <Camera className="cursor-pointer bg-white absolute left-[140px] top-[145px] w-10 h-10 border-4 border-white rounded-full p-1" />
                 </label>
                 <input
+                  // onSubmit={toast.success("Profile Updated.")}
                   id="profileImage"
                   type="file"
                   accept="image/*"

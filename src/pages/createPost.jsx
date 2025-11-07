@@ -1,5 +1,6 @@
 import { Image, Laugh, X } from "lucide-react";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { AiOutlineGif } from "react-icons/ai";
 import { FaUserTag } from "react-icons/fa";
 import { IoIosMore } from "react-icons/io";
@@ -20,11 +21,11 @@ export const CreatePost = ({ isOpen, onClose }) => {
       setImage(URL.createObjectURL(file));
     }
   };
+
   const handlePostSubmit = (e) => {
     e.preventDefault();
 
     const oldPosts = JSON.parse(localStorage.getItem("posts")) || [];
-
     const newPost = {
       id: Date.now(),
       text,
@@ -32,18 +33,22 @@ export const CreatePost = ({ isOpen, onClose }) => {
     };
 
     localStorage.setItem("posts", JSON.stringify([newPost, ...oldPosts]));
-
+    toast.success("Posted.", { duration: 500 });
     setText("");
     setImage(null);
-    alert("post created successfully.");
-    onClose();
-    navigate("/home", { state: { newPost } });
+    // alert("post created successfully.");
+    setTimeout(() => {
+      onClose();
+      navigate("/home", { state: { newPost } });
+    }, 800);
   };
-const userImage = localStorage.getItem("profileimage");
 
+  const userImage = localStorage.getItem("profileimage");
 
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
+
       <div className=" bg-gray-500/30 min-h-screen min-w-screen grid justify-center items-center">
         <div className=" bg-white  rounded-md w-140  ">
           <form className=" px-3 py-3 grid gap-2" onSubmit={handlePostSubmit}>
@@ -57,7 +62,7 @@ const userImage = localStorage.getItem("profileimage");
             <hr className="my-2" />
             <div className="flex    gap-3">
               <img
-              src={userImage}
+                src={userImage}
                 alt="profile picture"
                 className="border w-10 h-10 rounded-full "
               />

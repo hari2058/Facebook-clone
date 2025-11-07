@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import z from "zod";
 
@@ -47,15 +47,19 @@ export default function RegisterForm() {
     );
     localStorage.setItem("gender", data.gender);
 
+    
+    toast.success("Successfully Registered");
     navigate("/");
     // alert("Registration Successful.");
-    toast("Successfully Registered👍")
   };
+
+ 
 
   return (
     <>
       <div>
-        <Toaster />
+        <Toaster position="top-center" 
+        reverseOrder={false}  />
       </div>
       <div>
         <div className="grid place-items-center  h-dvh w-screen bg-[rgb(242,244,247)]">

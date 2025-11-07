@@ -3,6 +3,7 @@ import { NavBar } from "../components/navbar";
 import { MoreHorizontal, X, Bookmark } from "lucide-react";
 import { BiLike } from "react-icons/bi";
 import { FaRegComment } from "react-icons/fa";
+import toast, { Toaster } from "react-hot-toast";
 
 export function BookMark() {
   const [bookmarks, setBookmarks] = useState([]);
@@ -26,13 +27,17 @@ export function BookMark() {
     const updatedBookmarks = bookmarks.filter((post) => post.id !== postID);
     setBookmarks(updatedBookmarks);
     localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks));
-    alert("Bookmark deleted.");
+    // alert("Bookmark deleted.");
+    toast.error("Unmarked", { duration: 1000 });
   };
 const userImage = localStorage.getItem("profileimage");
 
 
   return (
     <>
+    <Toaster 
+    position="top-center"
+    />
       <NavBar />
       <div className="flex flex-col gap-5 justify-center items-center p-2">
         {bookmarks.length === 0 && (

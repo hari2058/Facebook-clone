@@ -56,7 +56,7 @@ export const CreatePost = ({ isOpen, onClose }) => {
               <p className=" text-[18px] font-medium">Create Post</p>
               <X
                 onClick={onClose}
-                className="bg-gray-300 rounded-full p-1 w-8 h-8 absolute right-2"
+                className="bg-gray-300 rounded-full p-1 w-8 h-8 cursor-pointer absolute right-2"
               />
             </div>
             <hr className="my-2" />
@@ -104,11 +104,11 @@ export const CreatePost = ({ isOpen, onClose }) => {
                     className="w-5 h-5 hidden cursor-pointer  rounded-full absolute left-0 top-0 "
                   />
                 </label>
-                <FaUserTag className=" h-6 w-6 text-blue-700 " />
-                <Laugh className="text-yellow-500 " />
-                <IoLocationSharp className=" h-6 w-6 text-red-600 " />
-                <AiOutlineGif className=" h-6 w-6 text-white bg-green-700 rounded-lg  " />
-                <IoIosMore className=" h-6 w-6 " />
+                <FaUserTag className=" h-6 w-6 text-blue-700 cursor-pointer " />
+                <Laugh className="text-yellow-500 cursor-pointer " />
+                <IoLocationSharp className=" h-6 w-6 text-red-600 cursor-pointer " />
+                <AiOutlineGif className=" h-6 w-6 text-white bg-green-700 rounded-lg  cursor-pointer " />
+                <IoIosMore className=" h-6 w-6 cursor-pointer " />
               </div>
             </div>
 

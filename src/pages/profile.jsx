@@ -1,13 +1,17 @@
-import { Camera, CameraIcon, Pen, Plus } from "lucide-react";
+import { Camera, CameraIcon, EllipsisVertical, Pen, Plus } from "lucide-react";
 import { NavBar } from "../components/navbar";
 import { useEffect, useState } from "react";
 import { CreatePost } from "./createPost";
 import { CgProfile } from "react-icons/cg";
+import { BsThreeDotsVertical } from "react-icons/bs";
 import toast, { Toaster } from "react-hot-toast";
+import { Settings } from "../components/settings";
 
 export function Profile() {
   const [isPostOpen, setIsPostOpen] = useState(false);
   const [profileImage, setProfileImage] = useState(null);
+
+  const [isSettingOpen, setIsSettingOpen] = useState(false);
 
   const userName = localStorage.getItem("fullname") || "User";
 
@@ -28,16 +32,22 @@ export function Profile() {
       reader.onloadend = () => {
         localStorage.setItem("profileimage", reader.result);
         setProfileImage(reader.result);
-        toast.success("Profile Updated.")
+        toast.success("Profile Updated.");
       };
       reader.readAsDataURL(file);
     }
   };
 
+  const handleSettingOpen = () => {
+    setIsSettingOpen(true);
+  };
+  const handleSettingClose = () => {
+    setIsSettingOpen(false);
+  };
+
   return (
     <>
-    <Toaster position="top-center"
-    reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       <NavBar />
 
       <div className="relative">
@@ -78,16 +88,21 @@ export function Profile() {
                   </p>
                 </div>
 
-                <div className="flex gap-5">
+                <div className="flex gap-1">
                   <button
                     onClick={handleOpenPost}
-                    className="flex w-full cursor-pointer gap-3 bg-blue-600 text-white px-3 py-1 rounded-md font-bold items-center justify-center"
+                    className="flex w-full cursor-pointer gap-3 bg-blue-600 text-white px-1 py-1 rounded-md font-bold items-center justify-center"
                   >
                     <Plus /> Add a post
                   </button>
-
-                  <p className="flex gap-2 w-full bg-gray-300 rounded-md px-2 py-1 cursor-pointer items-center justify-center">
+                  <p className="flex gap-2 w-full bg-gray-300 rounded-md px-1 py-1 cursor-pointer items-center justify-center">
                     <Pen className="h-5" /> Edit Profile
+                  </p>
+                  <p
+                    onClick={handleSettingOpen}
+                    className="flex   bg-gray-300 rounded-md  cursor-pointer items-center justify-center"
+                  >
+                    <EllipsisVertical />
                   </p>
                 </div>
               </div>
@@ -101,6 +116,10 @@ export function Profile() {
             <CreatePost isOpen={isPostOpen} onClose={handleClosePost} />
           </div>
         )}
+
+        <div>
+          <Settings isOpen={isSettingOpen} onClose={handleSettingClose} />
+        </div>
       </div>
     </>
   );

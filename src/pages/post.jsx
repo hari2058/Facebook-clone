@@ -1,5 +1,6 @@
 import { Bookmark, MoreHorizontal, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { BiLike } from "react-icons/bi";
 import { FaRegComment } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
@@ -27,7 +28,8 @@ export const Post = () => {
     const updatedPosts = posts.filter((post) => post.id !== postID);
     setPosts(updatedPosts);
     localStorage.setItem("posts", JSON.stringify(updatedPosts));
-    alert("post deleted.");
+    toast("Post Deleted.", { duration: 1500 });
+    // alert("post deleted.");
   };
 
   const handleLike = (postID) => {
@@ -50,13 +52,15 @@ export const Post = () => {
 
     if (alreadyBookmarked) {
       updatedBookmark = savedBookmarks.filter((b) => b.id !== post.id);
-      alert("post removed from bookmarked.");
+      // alert("post removed from bookmarked.");
+      toast.error("Post Unmarked", { duration: 1000 });
     } else {
       updatedBookmark = [post, ...savedBookmarks];
+      toast.success("Bookmarked", { duration: 1000 });
     }
 
     localStorage.setItem("bookmarks", JSON.stringify(updatedBookmark));
-    alert("post bookmarked.");
+    // alert("post bookmarked.");
 
     setPosts((save) =>
       save.map((p) =>
@@ -64,11 +68,11 @@ export const Post = () => {
       )
     );
   };
-const userImage = localStorage.getItem("profileimage");
-
+  const userImage = localStorage.getItem("profileimage");
 
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="flex flex-col gap-5 justify-center items-center p-2">
         {posts.length === 0 && (
           <p className="text-gray-500 flex justify-center text-3xl">
@@ -81,7 +85,7 @@ const userImage = localStorage.getItem("profileimage");
               <div className="flex justify-between p-2">
                 <div className="flex gap-2">
                   <img
-                  src={userImage}
+                    src={userImage}
                     alt="profile"
                     className="w-10 h-10 rounded-full border "
                   />

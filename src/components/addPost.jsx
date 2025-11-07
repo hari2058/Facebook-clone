@@ -37,16 +37,25 @@ export function AddPost() {
             </div>
             <hr className="m-2 opacity-30" />
             <div className="flex justify-between p-2">
-              <p className="px-10 py-2 gap-1 hover:bg-gray-200 hover:rounded-2xl flex font-medium">
+              <p
+                onClick={handleOpenPost}
+                className="px-10 py-2 gap-1 hover:bg-gray-200 hover:rounded-2xl flex font-medium cursor-pointer"
+              >
                 <Video className="text-red-600  " /> Live Video
               </p>
 
-              <p className="flex py-2 px-10 gap-1  hover:bg-gray-200 hover:rounded-2xl font-medium">
+              <p
+                onClick={handleOpenPost}
+                className="flex py-2 px-10 gap-1  hover:bg-gray-200 hover:rounded-2xl font-medium cursor-pointer"
+              >
                 <Images className="text-green-500" />
                 photo/video
               </p>
 
-              <p className="flex py-2 px-10 gap-1 hover:bg-gray-200 hover:rounded-2xl font-medium">
+              <p
+                onClick={handleOpenPost}
+                className="flex py-2 px-10 gap-1 hover:bg-gray-200 hover:rounded-2xl font-medium cursor-pointer"
+              >
                 <Flag className="text-blue-700" /> Life event
               </p>
             </div>
